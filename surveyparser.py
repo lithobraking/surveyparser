@@ -8,6 +8,8 @@ print("Please select a .csv file")
 # TODO: add file type enforcement
 fn = askopenfilename() 
 
-csvFile = pd.read_csv(fn)
-print(csvFile)
+responses = pd.read_csv(fn)
+responses = responses.drop('Timestamp', axis=1)
+
+print(responses)
 
