@@ -8,8 +8,7 @@ print("Please select a .csv file")
 print('\n')
 print('\n')
 # TODO: add file type enforcement
-# fn = askopenfilename() 
-fn = "./testresponse.csv"
+fn = askopenfilename() 
 
 # prepare data for use
 responses = pd.read_csv(fn)
