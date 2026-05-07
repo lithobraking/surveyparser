@@ -15,7 +15,7 @@ def get_relationships_as_secondary_score(score, idx):
     items = [4, 5, 6, 9]
     
     while i < len(items):
-        total += score.iat[idx, (items[i] + 4)] # column positions are offset by 4 due to demographic questions
+        total += score.iat[idx, (items[i] + 4)]
         i += 1
 
     return total
@@ -26,7 +26,7 @@ def get_preoccupation_with_relationships_score(score, idx):
     items = [13, 17, 22, 23, 25]
     
     while i < len(items):
-        total += score.iat[idx, (items[i] + 4)] # column positions are offset by 4 due to demographic questions
+        total += score.iat[idx, (items[i] + 4)]
         i += 1
 
     return total  
