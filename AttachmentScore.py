@@ -42,10 +42,10 @@ def get_need_for_approval_score(score, idx):
 
     return total 
 
-def get_confidence_score(score, idx):
+def get_confidence_score_one(score, idx):
     total = 0
     i = 0
-    items = [1, 14, 24, 26, 28,29]
+    items = [1, 14, 28]
     
     while i < len(items):
         total += score.iat[idx, (items[i] + 4)]
@@ -53,6 +53,16 @@ def get_confidence_score(score, idx):
 
     return total 
 
+def get_confidence_score_two(score, idx):
+    total = 0
+    i = 0
+    items = [24, 26, 29]
+    
+    while i < len(items):
+        total += score.iat[idx, (items[i] + 4)]
+        i += 1
+
+    return total 
 def invert_asq_values(data):
     working_data = data.copy()
     inverted_values_map = {
