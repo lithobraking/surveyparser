@@ -63,6 +63,10 @@ def get_confidence_score_two(score, idx):
         i += 1
 
     return total 
+
+def get_avoidant_score(discomfort_with_closeness, relationships_as_secondary, confidence_in_interpersonal_interactions):
+    return (discomfort_with_closeness + relationships_as_secondary) - confidence_in_interpersonal_interactions
+
 def invert_asq_values(data):
     working_data = data.copy()
     inverted_values_map = {
@@ -90,15 +94,17 @@ def invert_asq_values(data):
     return working_data
 
 def score_asq(values):
-    discomfort_with_closeness = 0 # items 2, 3, 11, 12, 15, 16, 20, 27 (score range 9 - 54)
-    relationships_as_secondary = 0 # items 4, 5, 6, 9 (score range 4 -24)
-    preoccupation_with_relationships = 0 # items 13, 17, 22, 23, 25 (score range 5 - 30)
-    need_for_approval = 0 # items 7, 8, 10, 19, 21 (score range 5 - 30)
-    confidence_in_interpersonal_interactions = { # items 1, 14, 24, 26, 28,29 (score range 6 - 36)
-        "subscore1": 0,
-        "subscore2": 0
-    }
+    discomfort_with_closeness = get_discomfort_score(values, 0) # items 2, 3, 11, 12, 15, 16, 20, 27 (score range 9 - 54)
+    relationships_as_secondary = get_relationships_as_secondary_score(values, 0) # items 4, 5, 6, 9 (score range 4 -24)
+    preoccupation_with_relationships = get_preoccupation_with_relationships_score(values, 0) # items 13, 17, 22, 23, 25 (score range 5 - 30)
+    need_for_approval = get_need_for_approval_score(values, 0) # items 7, 8, 10, 19, 21 (score range 5 - 30)
+    confidence_one = get_confidence_score_one(values, 0) # items 1, 14, 24, 26, 28,29 (score range 6 - 36)
+    confidence_two = get_confidence_score_two(values, 0)
+
+    # print("uncomfy score:")
+    # print(discomfort_with_closeness)
+    # print(type(discomfort_with_closeness))
+    return get_avoidant_score(discomfort_with_closeness, relationships_as_secondary, confidence_one)
 
     # main attachment scores
-    avoidant_score = (discomfort_with_closeness + relationships_as_secondary) - confidence_in_interpersonal_interactions["subscore1"]
-    anxious_score = (preoccupation_with_relationships + need_for_approval) - confidence_in_interpersonal_interactions["subscore2"]
+    # anxious_score = (preoccupation_with_relationships + need_for_approval) - confidence_in_interpersonal_interactions["subscore2"]
