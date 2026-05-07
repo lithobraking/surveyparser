@@ -56,6 +56,4 @@ print('\n')
 print('\n')
 
 print("ASQ-SF scores: ") 
-print("discomfort with closeness: ", asq.get_discomfort_score(responses, 0))
-# print("discomfort with closeness: ", asq.get_discomfort_score(responses))
-# print("relationships as secondary: ", asq.get_relationships_as_secondary_score(responses))
+print("Avoidant Score: ", asq.score_asq(responses))
