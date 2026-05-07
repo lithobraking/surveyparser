@@ -1,10 +1,13 @@
 import pandas as pd
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
+import AttachmentScore as asq
 
 tk.Tk().withdraw()
 
 print("Please select a .csv file")
+print('\n')
+print('\n')
 # TODO: add file type enforcement
 fn = askopenfilename() 
 
@@ -14,6 +17,8 @@ responses = responses.drop('Timestamp', axis=1)
 
 print("Ingested response data. This is the current table:")
 print(responses)
+print('\n')
+print('\n')
 
 print("Filtering irrelevant data form table...")
 def prepare_data(table):
@@ -40,4 +45,15 @@ def prepare_data(table):
 responses = prepare_data(responses)
 print("Done! New table looks like this:")
 print(responses)
+print('\n')
+print('\n')
 
+responses = asq.invert_asq_values(responses)
+
+print("table with corrected values is as follows:")
+print(responses)
+print('\n')
+print('\n')
+
+print("ASQ-SF scores: ") 
+print("Avoidant Score: ", asq.score_asq(responses))
