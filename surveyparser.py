@@ -56,4 +56,7 @@ print('\n')
 print('\n')
 
 print("ASQ-SF scores: ") 
-print("Avoidant Score: ", asq.score_asq(responses))
+print("Avoidant Score: ", asq.get_avoidant_score(responses, 0))
+print("Anxious Score: ", asq.get_anxious_score(responses, 0))
+print("Avoidant Score 2: ", asq.get_avoidant_score(responses, 1))
+print("Anxious Score 2: ", asq.get_anxious_score(responses, 1))
