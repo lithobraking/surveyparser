@@ -18,6 +18,17 @@ def get_relationships_as_secondary_score(score, idx):
         total += score.iat[idx, (items[i] + 4)] # column positions are offset by 4 due to demographic questions
         i += 1
 
+    return total
+
+def get_preoccupation_with_relationships_score(score, idx):
+    total = 0
+    i = 0
+    items = [13, 17, 22, 23, 25]
+    
+    while i < len(items):
+        total += score.iat[idx, (items[i] + 4)] # column positions are offset by 4 due to demographic questions
+        i += 1
+
     return total  
 
 def invert_asq_values(data):
