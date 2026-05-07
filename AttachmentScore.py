@@ -88,6 +88,18 @@ def get_avoidant_rating(score):
 
     return descriptor
 
+def get_anxious_rating(score):
+    descriptor = "blank"
+
+    if (score <= 14):
+        descriptor = "LOW"
+    elif (score > 15 and score < 27):
+        descriptor = "AVG"
+    elif (score >= 28):
+        descriptor = "HIGH"
+
+    return descriptor
+
 def invert_asq_values(data):
     working_data = data.copy()
     inverted_values_map = {
