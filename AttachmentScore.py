@@ -76,6 +76,18 @@ def get_anxious_score(values, idx):
     confidence_in_interpersonal_interactions = get_confidence_score_two(values, idx)
     return (preoccupation_with_relationships + need_for_approval) - confidence_in_interpersonal_interactions
 
+def get_avoidant_rating(score):
+    descriptor = "blank"
+
+    if (score <= 20):
+        descriptor = "LOW"
+    elif (score > 20 and score < 36):
+        descriptor = "AVG"
+    elif (score >= 36):
+        descriptor = "HIGH"
+
+    return descriptor
+
 def invert_asq_values(data):
     working_data = data.copy()
     inverted_values_map = {
