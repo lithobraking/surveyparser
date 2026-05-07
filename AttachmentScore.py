@@ -67,6 +67,9 @@ def get_confidence_score_two(score, idx):
 def get_avoidant_score(discomfort_with_closeness, relationships_as_secondary, confidence_in_interpersonal_interactions):
     return (discomfort_with_closeness + relationships_as_secondary) - confidence_in_interpersonal_interactions
 
+def get_anxious_score(preoccupation_with_relationships, need_for_approval, confidence_in_interpersonal_interactions):
+    return (preoccupation_with_relationships + need_for_approval) - confidence_in_interpersonal_interactions
+
 def invert_asq_values(data):
     working_data = data.copy()
     inverted_values_map = {
@@ -100,11 +103,10 @@ def score_asq(values):
     need_for_approval = get_need_for_approval_score(values, 0) # items 7, 8, 10, 19, 21 (score range 5 - 30)
     confidence_one = get_confidence_score_one(values, 0) # items 1, 14, 24, 26, 28,29 (score range 6 - 36)
     confidence_two = get_confidence_score_two(values, 0)
-
-    # print("uncomfy score:")
-    # print(discomfort_with_closeness)
-    # print(type(discomfort_with_closeness))
-    return get_avoidant_score(discomfort_with_closeness, relationships_as_secondary, confidence_one)
-
+   
     # main attachment scores
-    # anxious_score = (preoccupation_with_relationships + need_for_approval) - confidence_in_interpersonal_interactions["subscore2"]
+    avoidant_score = get_avoidant_score(discomfort_with_closeness, relationships_as_secondary, confidence_one)
+    anxious_score = get_anxious_score(preoccupation_with_relationships, need_for_approval, confidence_two)
+
+    print("avoidant score: ", avoidant_score)
+    print("anxious score: ", anxious_score)
