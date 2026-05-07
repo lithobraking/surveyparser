@@ -64,11 +64,41 @@ def get_confidence_score_two(score, idx):
 
     return total 
 
-def get_avoidant_score(discomfort_with_closeness, relationships_as_secondary, confidence_in_interpersonal_interactions):
+def get_avoidant_score(values, idx):
+    discomfort_with_closeness = get_discomfort_score(values, idx)
+    relationships_as_secondary = get_relationships_as_secondary_score(values, idx)
+    confidence_in_interpersonal_interactions = get_confidence_score_one(values, idx)
     return (discomfort_with_closeness + relationships_as_secondary) - confidence_in_interpersonal_interactions
 
-def get_anxious_score(preoccupation_with_relationships, need_for_approval, confidence_in_interpersonal_interactions):
+def get_anxious_score(values, idx):
+    preoccupation_with_relationships = get_preoccupation_with_relationships_score(values, idx)
+    need_for_approval = get_need_for_approval_score(values, idx)
+    confidence_in_interpersonal_interactions = get_confidence_score_two(values, idx)
     return (preoccupation_with_relationships + need_for_approval) - confidence_in_interpersonal_interactions
+
+def get_avoidant_rating(score):
+    descriptor = "blank"
+
+    if (score <= 20):
+        descriptor = "LOW"
+    elif (score > 20 and score < 36):
+        descriptor = "AVG"
+    elif (score >= 36):
+        descriptor = "HIGH"
+
+    return descriptor
+
+def get_anxious_rating(score):
+    descriptor = "blank"
+
+    if (score <= 14):
+        descriptor = "LOW"
+    elif (score > 15 and score < 27):
+        descriptor = "AVG"
+    elif (score >= 28):
+        descriptor = "HIGH"
+
+    return descriptor
 
 def invert_asq_values(data):
     working_data = data.copy()
@@ -96,17 +126,9 @@ def invert_asq_values(data):
 
     return working_data
 
-def score_asq(values):
-    discomfort_with_closeness = get_discomfort_score(values, 0) # items 2, 3, 11, 12, 15, 16, 20, 27 (score range 9 - 54)
-    relationships_as_secondary = get_relationships_as_secondary_score(values, 0) # items 4, 5, 6, 9 (score range 4 -24)
-    preoccupation_with_relationships = get_preoccupation_with_relationships_score(values, 0) # items 13, 17, 22, 23, 25 (score range 5 - 30)
-    need_for_approval = get_need_for_approval_score(values, 0) # items 7, 8, 10, 19, 21 (score range 5 - 30)
-    confidence_one = get_confidence_score_one(values, 0) # items 1, 14, 24, 26, 28,29 (score range 6 - 36)
-    confidence_two = get_confidence_score_two(values, 0)
-   
-    # main attachment scores
-    avoidant_score = get_avoidant_score(discomfort_with_closeness, relationships_as_secondary, confidence_one)
-    anxious_score = get_anxious_score(preoccupation_with_relationships, need_for_approval, confidence_two)
+# discomfort with closeness: items 2, 3, 11, 12, 15, 16, 20, 27 (score range 9 - 54)
+# relationships as secondary: items 4, 5, 6, 9 (score range 4 -24)
+# preoccupation with relationships: items 13, 17, 22, 23, 25 (score range 5 - 30)
+# need for approval: items 7, 8, 10, 19, 21 (score range 5 - 30)
+# confidence in interpersonal interactions: items 1, 14, 24, 26, 28,29 (score range 6 - 36)
 
-    print("avoidant score: ", avoidant_score)
-    print("anxious score: ", anxious_score)
