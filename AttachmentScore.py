@@ -9,6 +9,17 @@ def get_discomfort_score(score, idx):
 
     return total  
 
+def get_relationships_as_secondary_score(score, idx):
+    total = 0
+    i = 0
+    items = [4, 5, 6, 9]
+    
+    while i < len(items):
+        total += score.iat[idx, (items[i] + 4)] # column positions are offset by 4 due to demographic questions
+        i += 1
+
+    return total  
+
 def invert_asq_values(data):
     working_data = data.copy()
     inverted_values_map = {
