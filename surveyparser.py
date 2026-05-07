@@ -1,6 +1,7 @@
 import pandas as pd
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
+import AttachmentScore as asq
 
 tk.Tk().withdraw()
 
@@ -47,33 +48,14 @@ print(responses)
 print('\n')
 print('\n')
 
-def invert_asq_values(data):
-    working_data = data.copy()
-    inverted_values_map = {
-        1.0: 6.0,
-        2.0: 5.0,
-        3.0: 4.0,
-        4.0: 3.0,
-        5.0: 2.0,
-        6.0: 1.0
-    }
-
-    idx = 0
-    while idx < len(working_data):
-        first_question_value = working_data.iat[idx, 18]
-        working_data.iat[idx, 18] = inverted_values_map[first_question_value]
-
-        second_question_value = working_data.iat[idx, 19]
-        working_data.iat[idx, 19] = inverted_values_map[second_question_value]
-
-        third_question_value = working_data.iat[idx, 29]
-        working_data.iat[idx, 29] = inverted_values_map[third_question_value]
-
-        idx += 1
-
-    return working_data
-
-responses = invert_asq_values(responses)
+responses = asq.invert_asq_values(responses)
 
 print("table with corrected values is as follows:")
 print(responses)
+print('\n')
+print('\n')
+
+print("ASQ-SF scores: ") 
+print("discomfort with closeness: ", asq.get_discomfort_score(responses, 0))
+# print("discomfort with closeness: ", asq.get_discomfort_score(responses))
+# print("relationships as secondary: ", asq.get_relationships_as_secondary_score(responses))
