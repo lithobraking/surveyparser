@@ -31,6 +31,17 @@ def get_preoccupation_with_relationships_score(score, idx):
 
     return total  
 
+def get_need_for_approval_score(score, idx):
+    total = 0
+    i = 0
+    items = [7, 8, 10, 19, 21]
+    
+    while i < len(items):
+        total += score.iat[idx, (items[i] + 4)]
+        i += 1
+
+    return total 
+
 def invert_asq_values(data):
     working_data = data.copy()
     inverted_values_map = {
