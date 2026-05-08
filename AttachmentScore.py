@@ -1,3 +1,11 @@
+# # # SUBSCORE HELPER FUNCTIONS # # #
+
+# discomfort with closeness: items 2, 3, 11, 12, 15, 16, 20, 27 (score range 9 - 54)
+# relationships as secondary: items 4, 5, 6, 9 (score range 4 -24)
+# preoccupation with relationships: items 13, 17, 22, 23, 25 (score range 5 - 30)
+# need for approval: items 7, 8, 10, 19, 21 (score range 5 - 30)
+# confidence in interpersonal interactions: items 1, 14, 24, 26, 28,29 (score range 6 - 36)
+
 def get_discomfort_score(score, idx):
     total = 0
     i = 0
@@ -64,6 +72,8 @@ def get_confidence_score_two(score, idx):
 
     return total 
 
+# # # MAIN SCORE HELPER FUNCTIONS # # #
+
 def get_avoidant_score(values, idx):
     discomfort_with_closeness = get_discomfort_score(values, idx)
     relationships_as_secondary = get_relationships_as_secondary_score(values, idx)
@@ -122,6 +132,8 @@ def get_attachment_style(avoidant_rating, anxious_rating):
     
     return attachment_style
 
+# # # DATA PREP FUNCTIONS # # #
+
 def invert_asq_values(data):
     working_data = data.copy()
     inverted_values_map = {
@@ -148,9 +160,5 @@ def invert_asq_values(data):
 
     return working_data
 
-# discomfort with closeness: items 2, 3, 11, 12, 15, 16, 20, 27 (score range 9 - 54)
-# relationships as secondary: items 4, 5, 6, 9 (score range 4 -24)
-# preoccupation with relationships: items 13, 17, 22, 23, 25 (score range 5 - 30)
-# need for approval: items 7, 8, 10, 19, 21 (score range 5 - 30)
-# confidence in interpersonal interactions: items 1, 14, 24, 26, 28,29 (score range 6 - 36)
+
 
