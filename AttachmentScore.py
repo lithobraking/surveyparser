@@ -100,6 +100,28 @@ def get_anxious_rating(score):
 
     return descriptor
 
+# # # ATTACHMENT STYLE FUNCTION # # # 
+
+def get_attachment_style(avoidant_rating, anxious_rating):
+    attachment_style = "blank"
+    if (avoidant_rating == "HIGH" ):
+        if (anxious_rating == "HIGH"):
+            attachment_style = "DISORGANISED"
+        else:
+            attachment_style = "AVOIDANT"
+    elif (avoidant_rating == "AVG"):
+        if (anxious_rating == "HIGH"):
+            attachment_style = "ANXIOUS"
+        else:
+            attachment_style = "SECURE"
+    elif (avoidant_rating == "LOW"):
+        if (anxious_rating == "HIGH"):
+            attachment_style = "ANXIOUS"
+        else:
+            attachment_style = "SECURE"
+    
+    return attachment_style
+
 def invert_asq_values(data):
     working_data = data.copy()
     inverted_values_map = {
