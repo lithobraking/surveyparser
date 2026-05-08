@@ -52,3 +52,14 @@ def get_love_score(data, idx):
         i += 1
 
     return total
+
+def evaluate_subscore(subscore):
+    result = "blank"
+    if (subscore < 3):
+        result = "LOW"
+    elif (subscore >= 3 and subscore <= 5):
+        result = "MODERATE"
+    else:
+        result = "HIGH"
+    
+    return result
