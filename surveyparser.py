@@ -30,8 +30,10 @@ def prepare_data(table):
         }
     
     for key, value in filter_questions.items():
+        # removes responses with disqualifying data
         if (isinstance(value, str)):
             working_data = working_data[working_data[key].str.contains(value) == False]
+        # handles age group filtering
         if (isinstance(value, list)):
             i = 0
             while i < len(value):
@@ -55,21 +57,22 @@ print(responses)
 print('\n')
 print('\n')
 
-print("ASQ-SF scores: ") 
-avoidant_score = asq.get_avoidant_score(responses, 0)
-anxious_score = asq.get_anxious_score(responses, 0)
-attachment_style = asq.get_attachment_style(asq.get_avoidant_rating(avoidant_score), asq.get_anxious_rating(anxious_score))
-print("Avoidant Score: ", asq.get_avoidant_score(responses, 0))
-print ("avoidant rating: ", asq.get_avoidant_rating(avoidant_score))
-print ("Anxious Score: ", asq.get_anxious_score(responses, 0))
-print ("anxious rating: ", asq.get_anxious_rating(anxious_score))
-print ("attachment style: ", attachment_style)
-print ('\n')
-avoidant_score_2 = asq.get_avoidant_score(responses, 1)
-anxious_score_2 = asq.get_anxious_score(responses, 1)
-attachment_style_2 = asq.get_attachment_style(asq.get_avoidant_rating(avoidant_score_2), asq.get_anxious_rating(anxious_score_2))
-print ("Avoidant Score 2: ", asq.get_avoidant_score(responses, 1))
-print ("avoidant rating 2: ", asq.get_avoidant_rating(avoidant_score_2))
-print ("anxious score 2: ", asq.get_anxious_rating(anxious_score_2))
-print ("Anxious Score 2: ", asq.get_anxious_score(responses, 1))
-print ("attachment style 2: ", attachment_style_2)
+def score_responses(data):
+    working_data = data.copy()
+    idx = 0
+    
+    # yes yes yes i know that iterating over dataframes is bad practice this is just for the sake of completing the assignment
+    while (idx < len(working_data.index)):
+        print("ASQ-SF scores for index ", idx) 
+        avoidant_score = asq.get_avoidant_score(responses, idx)
+        anxious_score = asq.get_anxious_score(responses, idx)
+        attachment_style = asq.get_attachment_style(asq.get_avoidant_rating(avoidant_score), asq.get_anxious_rating(anxious_score))
+        print("Avoidant Score: ", asq.get_avoidant_score(responses, idx))
+        print ("avoidant rating: ", asq.get_avoidant_rating(avoidant_score))
+        print ("Anxious Score: ", asq.get_anxious_score(responses, idx))
+        print ("anxious rating: ", asq.get_anxious_rating(anxious_score))
+        print ("attachment style: ", attachment_style)
+        print ('\n')
+        idx += 1
+
+score_responses(responses)
