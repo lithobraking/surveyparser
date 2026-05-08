@@ -74,11 +74,14 @@ def score_responses(data):
         print ("anxious rating: ", asq.get_anxious_rating(anxious_score))
         print ("attachment style: ", attachment_style)
         print ("satisfaction: ", rq.get_satisfaction_score(working_data, idx))
+        print (f'that is {rq.evaluate_subscore(rq.get_satisfaction_score(working_data, idx))}')
         print ("intimacy", rq.get_intimacy_score(working_data, idx))
+        print (f'that is {rq.evaluate_subscore(rq.get_intimacy_score(working_data, idx))}')
         print ("trust: ", rq.get_trust_score(working_data, idx))
+        print (f'that is {rq.evaluate_subscore(rq.get_trust_score(working_data, idx))}')
         print ('\n')
-        
 
+        
         idx += 1
 
 score_responses(responses)
