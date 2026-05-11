@@ -2,6 +2,7 @@ import pandas as pd
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
 import AttachmentScore as asq
+import RelationshipQuality as rq
 
 tk.Tk().withdraw()
 
@@ -64,15 +65,23 @@ def score_responses(data):
     # yes yes yes i know that iterating over dataframes is bad practice this is just for the sake of completing the assignment
     while (idx < len(working_data.index)):
         print("ASQ-SF scores for index ", idx) 
-        avoidant_score = asq.get_avoidant_score(responses, idx)
-        anxious_score = asq.get_anxious_score(responses, idx)
+        avoidant_score = asq.get_avoidant_score(working_data, idx)
+        anxious_score = asq.get_anxious_score(working_data, idx)
         attachment_style = asq.get_attachment_style(asq.get_avoidant_rating(avoidant_score), asq.get_anxious_rating(anxious_score))
-        print("Avoidant Score: ", asq.get_avoidant_score(responses, idx))
+        print ("Avoidant Score: ", asq.get_avoidant_score(working_data, idx))
         print ("avoidant rating: ", asq.get_avoidant_rating(avoidant_score))
-        print ("Anxious Score: ", asq.get_anxious_score(responses, idx))
+        print ("Anxious Score: ", asq.get_anxious_score(working_data, idx))
         print ("anxious rating: ", asq.get_anxious_rating(anxious_score))
         print ("attachment style: ", attachment_style)
+        print ("satisfaction: ", rq.get_satisfaction_score(working_data, idx))
+        print (f'that is {rq.evaluate_subscore(rq.get_satisfaction_score(working_data, idx))}')
+        print ("intimacy", rq.get_intimacy_score(working_data, idx))
+        print (f'that is {rq.evaluate_subscore(rq.get_intimacy_score(working_data, idx))}')
+        print ("trust: ", rq.get_trust_score(working_data, idx))
+        print (f'that is {rq.evaluate_subscore(rq.get_trust_score(working_data, idx))}')
         print ('\n')
+
+        
         idx += 1
 
 score_responses(responses)

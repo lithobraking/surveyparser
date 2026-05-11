@@ -6,7 +6,7 @@
 # need for approval: items 7, 8, 10, 19, 21 (score range 5 - 30)
 # confidence in interpersonal interactions: items 1, 14, 24, 26, 28,29 (score range 6 - 36)
 
-def get_discomfort_score(score, idx):
+def get_discomfort_score(score, idx): # idx corresponds to the row
     total = 0
     i = 0
     items = [2, 3, 11, 12, 15, 16, 20, 27]
