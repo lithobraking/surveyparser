@@ -50,7 +50,7 @@ def get_love_score(data, idx):
     total = 0
     i = 0
     items = [33, 40]
-    
+
     while i < len(items):
         total += data.iat[idx, (items[i] + 3)]
         i += 1
@@ -68,14 +68,14 @@ def evaluate_subscore(subscore):
     
     return result
 
-def get_overall_satisfaction():
+def get_overall_satisfaction(relationship_quality_score):
     result = "blank"
-    relationship_quality = get_relationship_quality_score
-    if (relationship_quality >= 3 and relationship_quality < 10):
+    relationship_quality_score
+    if (relationship_quality_score >= 3 and relationship_quality_score < 10):
         result = "LOW"
-    elif (relationship_quality >=10 and relationship_quality <= 17):
+    elif (relationship_quality_score >=10 and relationship_quality_score <= 17):
         result = "MODERATE"
-    elif (relationship_quality >= 17 and relationship_quality <= 24):
+    elif (relationship_quality_score >= 17 and relationship_quality_score <= 24):
         result = "HIGH"
     
     return result
