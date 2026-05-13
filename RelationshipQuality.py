@@ -1,4 +1,4 @@
-def get_relationship_quality_score(data, idx):
+def get_relationship_quality_score(data, idx, adjustment):
     total = 0
     i = 0
     items = list(range(30, 40))
@@ -7,7 +7,7 @@ def get_relationship_quality_score(data, idx):
         total += data.iat[idx, (items[i] + 3)]
         i += 1
 
-    return total - get_love_score
+    return total - adjustment
 
 def get_satisfaction_score(data, idx):
     total = 0
