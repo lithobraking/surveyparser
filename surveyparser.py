@@ -47,6 +47,7 @@ responses = prepare_data(responses)
 responses = asq.invert_asq_values(responses)
 print("Step complete!")
 
+print("Scoring responses...")
 def score_responses(data):
     working_data = data.copy()
     output_data = {
