@@ -105,4 +105,10 @@ def score_responses(data):
     return final_scores
 
 processed_data = score_responses(responses)
-print(processed_data)
+
+fp = Path("output/scores.csv")
+fp.parent.mkdir(parents = True, exist_ok = True)
+processed_data.to_csv(fp, float_format = "%.2f")
+processed_data.to_excel("output/scores.xlsx", float_format = "%.2f")
+
+input("all done! press any key to exit.")
