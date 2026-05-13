@@ -1,13 +1,13 @@
-def get_relationship_quality_score(data, idx):
+def get_relationship_quality_score(data, idx, adjustment):
     total = 0
     i = 0
     items = list(range(30, 40))
     
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
+        total += data.iat[idx, (items[i] + 3)]
         i += 1
 
-    return total - get_love_score
+    return total - adjustment
 
 def get_satisfaction_score(data, idx):
     total = 0
@@ -15,7 +15,7 @@ def get_satisfaction_score(data, idx):
     items = [30, 34, 37]
     
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
+        total += data.iat[idx, (items[i] + 3)]
         i += 1
 
     return total / len(items)
@@ -26,7 +26,7 @@ def get_intimacy_score(data, idx):
     items = [31, 35, 38]
     
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
+        total += data.iat[idx, (items[i] + 3)]
         i += 1
 
     return total / len(items)
@@ -37,7 +37,7 @@ def get_trust_score(data, idx):
     items = [32, 36, 39]
     
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
+        total += data.iat[idx, (items[i] + 3)]
         i += 1
 
     return total / len(items)
@@ -50,9 +50,9 @@ def get_love_score(data, idx):
     total = 0
     i = 0
     items = [33, 40]
-    
+
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
+        total += data.iat[idx, (items[i] + 3)]
         i += 1
 
     return total
@@ -68,14 +68,14 @@ def evaluate_subscore(subscore):
     
     return result
 
-def get_overall_satisfaction():
+def get_overall_satisfaction(relationship_quality_score):
     result = "blank"
-    relationship_quality = get_relationship_quality_score
-    if (relationship_quality >= 3 and relationship_quality < 10):
+    if (relationship_quality_score >= 9 and relationship_quality_score <= 27):
         result = "LOW"
-    elif (relationship_quality >=10 and relationship_quality <= 17):
+    elif (relationship_quality_score >=28 and relationship_quality_score <= 45):        
         result = "MODERATE"
-    elif (relationship_quality >= 17 and relationship_quality <= 24):
+    elif (relationship_quality_score >= 46 and relationship_quality_score <= 63):
         result = "HIGH"
     
     return result
+
