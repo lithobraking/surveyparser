@@ -15,7 +15,8 @@ fn = askopenfilename()
 
 # prepare data for use
 responses = pd.read_csv(fn)
-responses = responses.drop('Timestamp', axis=1)
+responses = responses.drop('Timestamp', axis = 1)
+responses = responses.drop('Participant ID (DO NOT EDIT THIS)', axis = 1)
 
 print("Ingested response data.")
 print("Filtering irrelevant data form table...")
