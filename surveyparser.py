@@ -15,7 +15,8 @@ fn = askopenfilename()
 
 # prepare data for use
 responses = pd.read_csv(fn)
-responses = responses.drop('Timestamp', axis=1)
+responses = responses.drop('Timestamp', axis = 1)
+responses = responses.drop('Participant ID (DO NOT EDIT THIS)', axis = 1)
 
 print("Ingested response data.")
 print("Filtering irrelevant data form table...")
@@ -46,6 +47,7 @@ responses = prepare_data(responses)
 responses = asq.invert_asq_values(responses)
 print("Step complete!")
 
+print("Scoring responses...")
 def score_responses(data):
     working_data = data.copy()
     output_data = {
