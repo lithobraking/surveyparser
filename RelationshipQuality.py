@@ -4,7 +4,6 @@ def get_relationship_quality_score(data, idx):
     items = list(range(30, 40))
     
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
         total += data.iat[idx, (items[i] + 3)]
         i += 1
 
@@ -16,7 +15,6 @@ def get_satisfaction_score(data, idx):
     items = [30, 34, 37]
     
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
         total += data.iat[idx, (items[i] + 3)]
         i += 1
 
@@ -28,7 +26,6 @@ def get_intimacy_score(data, idx):
     items = [31, 35, 38]
     
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
         total += data.iat[idx, (items[i] + 3)]
         i += 1
 
@@ -40,7 +37,6 @@ def get_trust_score(data, idx):
     items = [32, 36, 39]
     
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
         total += data.iat[idx, (items[i] + 3)]
         i += 1
 
@@ -56,7 +52,6 @@ def get_love_score(data, idx):
     items = [33, 40]
     
     while i < len(items):
-        total += data.iat[idx, (items[i] + 4)]
         total += data.iat[idx, (items[i] + 3)]
         i += 1
 
