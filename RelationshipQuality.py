@@ -70,12 +70,11 @@ def evaluate_subscore(subscore):
 
 def get_overall_satisfaction(relationship_quality_score):
     result = "blank"
-    relationship_quality_score
-    if (relationship_quality_score >= 3 and relationship_quality_score < 10):
+    if (relationship_quality_score >= 9 and relationship_quality_score <= 27):
         result = "LOW"
-    elif (relationship_quality_score >=10 and relationship_quality_score <= 17):
+    elif (relationship_quality_score >=28 and relationship_quality_score <= 45):        
         result = "MODERATE"
-    elif (relationship_quality_score >= 17 and relationship_quality_score <= 24):
+    elif (relationship_quality_score >= 46 and relationship_quality_score <= 63):
         result = "HIGH"
     
     return result
