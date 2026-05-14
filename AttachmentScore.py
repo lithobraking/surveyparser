@@ -103,7 +103,7 @@ def get_anxious_rating(score):
 
     if (score <= 14):
         descriptor = "LOW"
-    elif (score > 15 and score < 27):
+    elif (score >= 15 and score <= 27):
         descriptor = "AVG"
     elif (score >= 28):
         descriptor = "HIGH"
